@@ -9,13 +9,18 @@
                     <div class="top-link pe-2">
                         <a href="{{ route('privacy_policy') }}" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
                         <a href="{{ route('terms&conditions') }}" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <a href="{{ route('dashboard') }}" class="text-white"><small class="text-white ms-2">Admin</small></a>
                     </div>
                 </div>
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="{{ route('home') }}" class="navbar-brand"><h1 class="text-primary display-6">FreshFusion</h1></a> {{--Fruitables --}}
+                    <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center gap-2">
+                        <img src="{{ asset('img/Logo.jpg') }}" alt="FreshFusion Logo"
+                             class="brand-image img-circle elevation-3"
+                             style="opacity: .8; width: 40px; height: 40px; object-fit: cover;">
+                        <h1 class="text-primary display-6 m-0">FreshFusion</h1>
+                    </a>{{--Fruitables --}}
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
