@@ -43,27 +43,37 @@
                     <thead>
                         <tr>
                             <th width="60">ID</th>
+                            <th width="80"></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Gender</th>
+                            <th>Address</th>
                             <th width="100">Status</th>
                             <th width="100">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($users as $user)
                         <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Ritika Singh</td>
-                            <td>example@example.com</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ asset('backend') }}/{{ $product->productattachments->file_path ?? 'Product_attachments/no_image.png' }}"
+                                class="img-thumbnail" width="50" height="50"></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
                             <td>123456789</td>
-                            <td>Female</td>
+                            <td>1234sasddsd56789</td>
                             <td>
-                                <svg class="text-success-500 h-6 w-6 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
+                                @if ($user->status == 1)
+                                    {{-- Green check icon --}}
+                                    <svg class="text-success-500 h-6 w-6 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                @else
+                                    {{-- Red cross icon --}}
+                                    <svg class="text-red-500 h-6 w-6 text-danger" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                @endif
                             </td>
                             <td>
                                 <a href="#">
@@ -78,6 +88,7 @@
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

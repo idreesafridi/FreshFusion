@@ -52,9 +52,26 @@
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="#" class="my-auto">
-                                <i class="fas fa-user fa-2x"></i>
-                            </a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link  {{ request()->routeIs(...$pagesRoutes) ? 'active' : '' }}" ><i class="fas fa-user fa-2x"></i></a>
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                    @auth
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">Setting</a>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                            </button>
+                                        </form>
+                                    @endauth
+
+                                    @guest
+                                        <a href="{{ route('login') }}" class="dropdown-item">
+                                            <i class="fas fa-sign-in-alt mr-2"></i> Login
+                                        </a>
+                                    @endguest
+                                </div>
+                            </div>    
                         </div>
                     </div>
                 </nav>

@@ -23,7 +23,7 @@
             <a class="nav-link p-0 pr-3" data-toggle="dropdown" href="#">
                 <img src="{{ asset('img/avatar5.png') }}" class='img-circle elevation-2' width="40" height="40" alt="">
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3 show" style="position: absolute; right: 0;">
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3 " style="position: absolute; right: 0;">
                 <h4 class="h4 mb-0"><strong>{{ Auth::user()->name }}</strong></h4>
                 <div class="mb-3">{{ Auth::user()->email }}</div>
 

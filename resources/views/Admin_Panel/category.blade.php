@@ -54,7 +54,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->description }}</td>
+                                <td>{{ Str::limit($category->description, 50) }}</td>
                                 {{-- <td>
                                     @if($category->status == 1)
                                         <span class="badge badge-success">Active</span>

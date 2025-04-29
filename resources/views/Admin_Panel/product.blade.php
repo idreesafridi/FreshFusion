@@ -63,7 +63,7 @@
                             <td><img src="{{ asset('backend') }}/{{ $product->productattachments->file_path ?? 'Product_attachments/no_image.png' }}"
                                  class="img-thumbnail" width="50" height="50"></td>
                             <td><a href="#">{{ $product->title }}</a></td>
-                            <td>{!! $product->description !!}</td>
+                            <td>{!! Str::limit($product->description, 50) !!}</td>
                             <td>${{ $product->price }}</td>
                             <td>
                                 @if ($product->qty > 0)

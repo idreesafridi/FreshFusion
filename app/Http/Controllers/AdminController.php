@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttachment;
@@ -17,7 +18,8 @@ class AdminController extends Controller
 
     public function UserList()
     {
-        return view('Admin_Panel.user');
+        $users =  User::all();
+        return view('Admin_Panel.user', compact('users'));
     }
 
     public function CategoryList()
@@ -184,12 +186,21 @@ class AdminController extends Controller
     public function DeleteProduct($id)
     {
         $product = Product::findOrFail($id);
-        $product_image =  ProductAttachment::where('product_id',$id)->first();
-        $filePath = $product_image->file_path;
-        $this->deleteFile($filePath);
+        $product_image = ProductAttachment::where('product_id', $id)->first();
+
+        if ($product_image) {
+            $filePath = $product_image->file_path;
+            $this->deleteFile($filePath);
+        }
+
         $product->delete();
 
-        return redirect()->route('admin-product')->with(['type'=>'success','msg'=>'Product Deleted Successfully','title'=>'Done!']);
+        return redirect()->route('admin-product')->with([
+            'type' => 'success', 
+            'msg' => 'Product Deleted Successfully', 
+            'title' => 'Done!'
+        ]);
     }
+
 
 }
